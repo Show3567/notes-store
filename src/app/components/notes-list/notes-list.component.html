@@ -1,0 +1,13 @@
+<div class="notes_list_container">
+  <div class="notes_list_nav">
+    <span>Notes</span>
+    <button (click)="emptyform()">+</button>
+  </div>
+  <div
+    *ngFor="let note of noteslist$ | async; let i = index"
+    class="notes_list_item"
+  >
+    <span (click)="showitem(i)">{{ note.title }}</span>
+    <button (click)="deletnote(i)">[X]</button>
+  </div>
+</div>
