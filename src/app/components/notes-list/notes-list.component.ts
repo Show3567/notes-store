@@ -1,6 +1,4 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Note } from 'src/app/interfaces/note';
 import { NotesService } from 'src/app/services/notes.service';
 
 @Component({
@@ -14,7 +12,7 @@ export class NotesListComponent implements OnInit {
   constructor(private notesService: NotesService) {}
 
   ngOnInit(): void {
-    this.noteslist$ = this.notesService.subj$;
+    this.noteslist$ = this.notesService.getnoteslist();
   }
 
   deletnote(noteindex: number) {

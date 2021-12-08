@@ -28,7 +28,7 @@ export class NoteContentComponent implements OnInit {
       content: [''],
     });
 
-    this.notesService.showitem$.subscribe((note: any) => {
+    this.notesService.getnoteitem().subscribe((note: any) => {
       this.note = note[0];
       this.id = note[1];
       this.title.setValue(this.note.title);

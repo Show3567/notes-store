@@ -6,10 +6,10 @@ import { Note } from '../interfaces/note';
   providedIn: 'root',
 })
 export class NotesService {
-  noteslist: Note[] = [];
+  private noteslist: Note[] = [];
 
-  subj$ = new BehaviorSubject(this.noteslist);
-  showitem$ = new BehaviorSubject([{}, -1]);
+  private subj$ = new BehaviorSubject(this.noteslist);
+  private showitem$ = new BehaviorSubject([{}, -1]);
 
   constructor() {
     const notesliststr = localStorage.getItem('notes');
@@ -41,5 +41,12 @@ export class NotesService {
   }
   emptyform() {
     this.showitem$.next([{ title: '', content: '' }, -1]);
+  }
+
+  getnoteslist() {
+    return this.subj$.asObservable();
+  }
+  getnoteitem() {
+    return this.showitem$.asObservable();
   }
 }
