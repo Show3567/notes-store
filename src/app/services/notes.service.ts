@@ -42,7 +42,4 @@ export class NotesService {
   emptyform() {
     this.showitem$.next([{ title: '', content: '' }, -1]);
   }
-  revert() {
-    localStorage.getItem('notes');
-  }
 }

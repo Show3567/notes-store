@@ -1,11 +1,13 @@
 <div class="notes_content_container">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <input formControlName="title" />
-    <textarea
-      formControlName="content"
-      class="textarea-control"
-      rows="6"
-    ></textarea>
+    <div class="input_holder">
+      <input formControlName="title" />
+      <textarea
+        formControlName="content"
+        class="textarea-control"
+        rows="6"
+      ></textarea>
+    </div>
 
     <div class="btns">
       <button type="button" [disabled]="isdisabled" (click)="revert()">

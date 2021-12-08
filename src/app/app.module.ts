@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { NotesListComponent } from './components/notes-list/notes-list.component';
 import { NoteContentComponent } from './components/note-content/note-content.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PickpicComponent } from './pickpic/pickpic.component';
 
 @NgModule({
-  declarations: [AppComponent, NotesListComponent, NoteContentComponent],
+  declarations: [AppComponent, NotesListComponent, NoteContentComponent, PickpicComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
