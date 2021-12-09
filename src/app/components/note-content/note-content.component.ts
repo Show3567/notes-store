@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { merge } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
 import { Note } from 'src/app/interfaces/note';
 import { NotesService } from 'src/app/services/notes.service';
 
@@ -10,7 +13,9 @@ import { NotesService } from 'src/app/services/notes.service';
 })
 export class NoteContentComponent implements OnInit {
   note: Note = { title: '', content: '' };
+
   id: number = -1;
+
   form: any;
   isdisabled = true;
   get title() {
@@ -35,12 +40,15 @@ export class NoteContentComponent implements OnInit {
       this.content.setValue(this.note.content);
     });
 
-    this.title.valueChanges.subscribe((val: any) => {
-      this.isdisabled = val === this.note.title;
-    });
-    this.content.valueChanges.subscribe((val: any) => {
-      this.isdisabled = val === this.note.content;
-    });
+    merge(this.title.valueChanges, this.content.valueChanges)
+      .pipe(
+        tap((_) => {
+          const checkcontent = this.content.value === this.note.content;
+          const checktitle = this.title.value === this.note.title;
+          this.isdisabled = checkcontent && checktitle;
+        })
+      )
+      .subscribe();
   }
 
   onSubmit() {

@@ -31,6 +31,7 @@ export class NotesService {
     localStorage.setItem('notes', JSON.stringify(this.noteslist));
     this.subj$.next(this.noteslist);
   }
+
   delete(noteindex: number) {
     this.noteslist = this.noteslist.filter((note, i) => i !== noteindex);
     localStorage.setItem('notes', JSON.stringify(this.noteslist));

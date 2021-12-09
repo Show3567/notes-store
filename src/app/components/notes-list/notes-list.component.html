@@ -3,6 +3,7 @@
     <span>Notes</span>
     <button (click)="emptyform()">+</button>
   </div>
+
   <div
     *ngFor="let note of noteslist$ | async; let i = index"
     class="notes_list_item"
