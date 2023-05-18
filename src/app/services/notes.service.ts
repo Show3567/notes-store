@@ -19,7 +19,7 @@ export class NotesService {
     }
   }
 
-  add(note: any) {
+  add(note: Note) {
     const obj = this.noteslist.find((ele) => ele.title === note.title);
     if (obj) {
       obj.content = note.content;
