@@ -19,6 +19,5 @@ export class PickpicComponent implements OnInit {
         this.piclist.push(num + color + '.png');
       });
     });
-    console.log(this.piclist);
   }
 }

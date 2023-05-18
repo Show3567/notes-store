@@ -16,7 +16,6 @@ export class NotesListComponent implements OnInit {
   }
 
   deletnote(noteindex: number) {
-    console.log(noteindex);
     this.notesService.delete(noteindex);
   }
 

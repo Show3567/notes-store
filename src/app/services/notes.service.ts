@@ -9,7 +9,7 @@ export class NotesService {
   private noteslist: Note[] = [];
 
   private subj$ = new BehaviorSubject(this.noteslist);
-  private showitem$ = new BehaviorSubject([{}, -1]);
+  private showitem$ = new BehaviorSubject([{}, -1, false]);
 
   constructor() {
     const notesliststr = localStorage.getItem('notes');
@@ -26,7 +26,6 @@ export class NotesService {
     } else {
       this.noteslist.push(note);
     }
-    console.log('this.noteslist: ', this.noteslist);
 
     localStorage.setItem('notes', JSON.stringify(this.noteslist));
     this.subj$.next(this.noteslist);
@@ -38,10 +37,10 @@ export class NotesService {
     this.subj$.next(this.noteslist);
   }
   showitem(noteindex: number) {
-    this.showitem$.next([this.noteslist[noteindex], noteindex]);
+    this.showitem$.next([this.noteslist[noteindex], noteindex, true]);
   }
   emptyform() {
-    this.showitem$.next([{ title: '', content: '' }, -1]);
+    this.showitem$.next([{ title: '', content: '' }, -1, false]);
   }
 
   getnoteslist() {
